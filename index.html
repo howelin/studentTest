@@ -1,0 +1,391 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>美团首页项目</title>
+        <meta name="description" content="美团首页项目">
+
+		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/idangerous.swiper.css">
+        <link rel="stylesheet" href="css/swiper.css"> 
+        <script src="js/angular.min.js"></script>
+        <style>            
+           /*头部区域*/
+            header{
+                  height:.48rem;                  
+                  color: #fff;
+                  background: #06c1ae;
+                  border-bottom: 1px solid #21897d;
+                  display: flex;
+              }
+
+              /*头部左侧*/
+              .nav-wrap-left{
+                  height:.48rem;
+                  line-height: .48rem;
+                  width: .68rem;
+                  font-weight: 200;
+                  font-size: .16rem;
+                  text-align: center;
+              }
+              .nav-wrap-left a{
+                color: #fff;
+              }             
+
+              .nav-wrap-left .text-icon{
+                  display: inline-block;
+                  vertical-align: middle;
+                  position: relative;
+                  top: -.2em;
+                  width: .5em;
+                  height: .5em;
+                  border-bottom: .03rem solid #fff;
+                  border-left: .03rem solid #fff;
+                  transform: scaleX(0.7) rotateZ(-45deg);
+              }              
+              /*中间*/
+              .search-box{
+                 border-radius: .06rem;
+                  background: rgba(0,0,0,.15);
+                  height: .34rem;
+                  line-height: .34rem;              
+                  margin-top: .08rem;
+                  flex: 1;    /*flex布局*/
+                  text-indent:.08rem;
+                  font-size: .16rem; 
+
+              }
+              
+              .search-box a{
+                 display:block;
+                 height: .34rem;
+                  line-height: .34rem;
+              }
+
+
+              /*右侧*/
+              .nav-wrap-right{
+                  height:.48rem;
+                  line-height: .48rem;
+                  width: .6rem;
+                  font-weight: 400;
+                  font-size: .16rem;   /*注意要设置字体大小*/
+                  text-align: center;
+
+              }
+              .nav-wrap-right a{
+                font-size:.16rem;
+                /* display:block; */
+                color:#fff;
+              }
+
+
+            /*ad*/
+
+            .ad_top{
+                width:100%;
+                height:0.5rem;
+            }
+            
+            .ad_top img{
+                width:100%;
+                height:0.5rem;
+                display:block;
+            }
+
+
+
+
+
+
+
+
+
+        </style>
+    </head>
+    <body ng-app="myApp">
+		
+		<div class="wrapper" ng-controller="meituanController">
+       	
+       	
+       	<div ng-include="'header.html'">
+
+            </div>
+       	
+        <section>
+        	<div class="ad_top">
+        		<a href="#">
+        			<img src="images/ad.jpg" alt="广告图片" />
+        		</a>
+        	</div>
+
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" ng-repeat="item in items">
+                          <ul class="icon-list">
+                            
+                            <li class="icon" ng-repeat="k in item.result">
+                                <a href="{{k.href}}">
+                                    <span class="icon-pic {{k.icon[0]}}">{{k.icon[1]}}</span>
+                                    <span class="icon-title">{{k.title}}</span>
+                                </a>
+                            </li>
+                            <!--<li class="icon">
+                                <a href="dianying.html">
+                                    <span class="icon-pic red">影</span>
+                                    <span class="icon-title">电影</span>
+                                </a>
+                            </li>
+                            <li class="icon">
+                                <a href="jiudian.html">
+                                    <span class="icon-pic d-blue">酒</span>
+                                    <span class="icon-title">酒店</span>
+                                </a>
+                            </li>
+
+                            <li class="icon">
+                                <a href="ktv.html">
+                                    <span class="icon-pic">K</span>
+                                    <span class="icon-title">KTV</span>
+                                </a>
+                            </li>
+                            <li class="icon">
+                                <a href="#">
+                                    <span class="icon-pic blue">游</span>
+                                    <span class="icon-title">周边游</span>
+                                </a>
+                            </li>
+                            <li class="icon">
+                                <a href="#">
+                                    <span class="icon-pic yellow">娱</span>
+                                    <span class="icon-title">休闲娱乐</span>
+                                </a>
+                            </li>
+                            <li class="icon">
+                                <a href="#">
+                                    <span class="icon-pic">外</span>
+                                    <span class="icon-title">外卖</span>
+                                </a>
+                            </li>
+                            <li class="icon">
+                                <a href="#">
+                                    <span class="icon-pic green">单</span>
+                                    <span class="icon-title">今日新单</span>
+                                </a>
+
+                            </li>-->
+                        </ul>
+
+                    </div>
+                    <!--<div class="swiper-slide">
+                       <ul class="icon-list">
+                            <li class="icon">
+                                <a href="#">
+                                    <span class="icon-pic red">丽</span>
+                                    <span class="icon-title">丽人</span>
+                                </a>
+                            </li>
+                            <li class="icon">
+                                <a href="#">
+                                    <span class="icon-pic">代</span>
+                                    <span class="icon-title">代金券</span>
+                                </a>
+                            </li>
+                            <li class="icon">
+                                <a href="#">
+                                    <span class="icon-pic">甜</span>
+                                    <span class="icon-title">甜点饮品</span>
+                                </a>
+                            </li>
+
+                            <li class="icon">
+                                <a href="#">
+                                    <span class="icon-pic">小</span>
+                                    <span class="icon-title">小吃快餐</span>
+                                </a>
+                            </li>
+                            <li class="icon">
+                                <a href="#">
+                                    <span class="icon-pic blue">旅</span>
+                                    <span class="icon-title">旅游</span>
+                                </a>
+                            </li>
+                            <li class="icon">
+                                <a href="#">
+                                    <span class="icon-pic">足</span>
+                                    <span class="icon-title">足疗按摩</span>
+                                </a>
+                            </li>
+                            <li class="icon">
+                                <a href="#">
+                                    <span class="icon-pic d-blue">全</span>
+                                    <span class="icon-title">全部分类</span>
+                                </a>
+                            </li>
+                            <li class="icon">
+                                <a href="#">
+                                    <span class="icon-pic green">单</span>
+                                    <span class="icon-title">今日新单</span>
+                                </a>
+
+                            </li>
+                        </ul>
+                    </div>-->
+                    
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+
+            <!--促销开始-->
+
+            <section class="preferential">
+                <div class="preferential-left">
+                    <a href="#" class="left-div">
+                        <div class="left-div-title">
+                           <p> <strong>我们约吧</strong></p>
+                            <p><small>恋人家人好朋友</small></p>
+                        </div>
+                        <div class="imgbox">
+                            <img src="images/leftpic.png">
+                        </div>
+                    </a>
+                </div>
+
+                <div class="preferential-right">
+                    <div class="preferential-right-top">
+                        <a href="#" class="right-top-div">
+                            <div class="right-top-title">
+                                <p><strong>低价超值</strong></p>
+                                <p> <small>十元惠生活</small></p>
+                            </div>
+                            <div class="right-top-imgbox">
+                                <img src="images/right-top-pic.jpg">
+                            </div>
+                        </a>
+                    </div>
+
+
+                    <div class="preferential-right-bottom">
+                        <div class="preferential-right-bottom-left">
+                            <a href="#" class="right-bottom-left-div">
+                                <div class="right-bottom-left-title">
+                                    <p><strong>聚餐宴请</strong></p>
+                                    <p><small>朋友家人常聚聚</small></p>
+                                </div>
+                                <div class="right-bottom-left-imgbox">
+                                    <img src="images/right-bottom-left.png">
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="preferential-right-bottom-right">
+                            <a href="#" class="right-bottom-right-div">
+                                <div class="right-bottom-right-title">
+                                    <p><strong>名店抢购</strong></p>
+                                    <p><small>距离结束</small></p>
+                                </div>
+                                <div class="right-bottom-right-imgbox">
+                                    <img src="images/time.png">
+                                </div>
+                            </a>
+                        </div>
+
+                        
+                    </div>
+                </div>
+
+        </section>
+
+
+
+        <!--促销结束-->
+                        
+
+			
+        	
+        </section>
+
+
+        <footer>
+        	底部
+        </footer>
+        
+        </div>
+
+
+
+          <script src="js/idangerous.swiper.min.js"></script>
+
+          <script>
+          
+          var mySwiper = new Swiper('.swiper-container', {
+		             autoplay: 10000,//可选选项，自动滑动
+		            // direction:'vertical'
+		            // direction : 'vertical',
+		            pagination : '.swiper-pagination',
+		            paginationClickable :true,
+		            loop : true
+		          })
+          
+          
+          
+		  var app = angular.module('myApp',[]);
+		  app.controller('meituanController', function ($scope) {
+		  	
+		  	$scope.swiperList = [
+	          {
+	          	id: 1,
+	          	result: [
+	          		{
+	          			href: 'meiShi.html',
+	          			icon: ['','美'],
+	          			title: '美食'
+	          		},
+	          		{
+	          			href: 'meiShi.html',
+	          			icon: ['red','电'],
+	          			title: '电影'
+	          		},
+	          		{
+	          			href: 'meiShi.html',
+	          			icon: '美',
+	          			title: '美食'
+	          		}
+	          	]
+	          },
+	          {
+	          	id: 2,
+	          	result: [
+	          		{
+	          			href: 'meiShi.html',
+	          			icon: ['','美'],
+	          			title: 'ktv'
+	          		},
+	          		{
+	          			href: 'meiShi.html',
+	          			icon: ['red','电'],
+	          			title: '电影'
+	          		},
+	          		{
+	          			href: 'meiShi.html',
+	          			icon: '美',
+	          			title: '美食'
+	          		}
+	          	]
+	          }
+          ]
+		  	
+		  	$scope.items = $scope.swiperList;
+
+			$scope.swiper = function () {
+				
+			}
+			
+			$scope.swiper();
+		  })
+          </script>
+    </body>
+</html>
